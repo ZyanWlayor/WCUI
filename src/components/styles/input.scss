@@ -1,0 +1,84 @@
+@import "../../styles/mixin";
+
+:host {
+    visibility: visible!important;
+
+    .input {
+        height: 56px;
+        width: 100%;
+        box-sizing: border-box;
+        display: inline-block;
+        position: relative;
+        margin-bottom: 20px;
+
+        &.validate-fail {
+            color: var( --font-color-error);
+
+            >.label {
+                transition: none !important;
+                color: var( --font-color-error) !important;
+            }
+
+            input {
+                color: var( --font-color-error);
+                border-color: var( --font-color-error);
+
+                &:focus {
+                    border-color: var( --font-color-error);
+                }
+            }
+        }
+
+        >.label {
+            position: absolute;
+            z-index: 1;
+            transition: font-size 0.2s ease-in 0s, color 0.2s ease-in 0s, top 0.2s cubic-bezier(0.4, 0, 1, 1) 0s;
+            line-height: 20px;
+            color: rgba(51, 51, 51, 0.8);
+            left: 8px;
+            top: 28px;
+            font-size: 12px;
+
+            &.has-value {
+                top: 0px;
+                left: 8px;
+                color: rgba(51, 51, 51, 0.4);
+            }
+        }
+
+        input {
+            position: relative;
+            z-index: 2;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 28px 8px 8px 8px;
+            font-size: 14px;
+            color: #333;
+            box-sizing: border-box;
+            border-bottom: 2px solid #eee;
+
+            &:focus {
+                border-color: var(--theme-color);
+
+            }
+        }
+
+        .errorMsg {
+            position: absolute;
+            top: 57px;
+            left: 8px;
+            font-size: 12px;
+            line-height: 20px;
+            color: var( --font-color-error);
+            margin: 0;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+    }
+}

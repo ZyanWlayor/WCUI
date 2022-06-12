@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Components - WCUI-Starter</title>
+    <link rel="stylesheet" href="/styles/reset.css">
+    <link rel="stylesheet" href="/styles/components/index.css">
+    <script src="/assets/spanner.js"></script>
+    <script src="/scripts/utils.js" defer></script>
+    <script src="/components/index.js" defer></script>
+</head>
+
+<body>
+    <h1 class="header">WCUI-Starter Guide</h1>
+    <h2 class="">目录：</h2>
+    <ul>
+
+    </ul>
+    <div class="component-section button">
+        <h2 class="component-header">按钮组件</h2>
+        <hr>
+
+        <div class="property">
+            <h4>属性：</h4>
+            <ul>
+                <li><strong>type</strong>: 支持primary，secondary。分别表示不同按钮的颜色分类</li>
+                <li><strong>size</strong>: 支持small,normal,big。分别表示不同按钮的大小</li>
+            </ul>
+        </div>
+
+        <div class="sample">
+            <h4>示例：</h4>
+            <wc-button size="normal" id="test-button">按钮</wc-button>
+            <wc-button type="secondary" size="small" id="test-button">按钮</wc-button>
+            <wc-button type="secondary" size="big" id="test-button">按钮</wc-button>
+        </div>
+
+        <div class="code-block">
+            <h4>代码：</h4>
+            <div class="inner">
+                &lt;wc-button size="normal" id="test-button"&gt;按钮&lt;/wc-button&gt;
+                <br />
+                &lt;wc-button type="secondary" size="small" id="test-button"&gt;按钮&lt;/wc-button&gt;
+                <br />
+                &lt;wc-button type="secondary" size="big" id="test-button"&gt;按钮&lt;/wc-button&gt;
+            </div>
+        </div>
+
+
+    </div>
+    <div class="component-section loading">
+        <h2 class="component-header">加载器组件</h2>
+        <hr>
+
+        <div class="property">
+            <h4>属性：</h4>
+            <ul>
+                <li><strong>successtext</strong>: 加载成功时显示的文本</li>
+                <li><strong>failuretext</strong>: 加载失败时显示的文本</li>
+            </ul>
+        </div>
+
+        <div class="property">
+            <h4>内部属性：</h4>
+            <ul>
+                <li><strong>status</strong>: 获取加载器当前状态</li>
+            </ul>
+        </div>
+
+        <div class="event">
+            <h4>方法：</h4>
+            <ul>
+                <li><strong>switchLoading</strong>: 设置加载器为加载中。</li>
+                <li><strong>switchSuccess</strong>: 设置加载器为成功，返回一个标志加载器完成成功动画的Promise。</li>
+                <li><strong>switchFailure</strong>: 设置加载器为失败，返回一个标志加载器完成失败动画的Promise。</li>
+            </ul>
+        </div>
+
+        <div class="sample">
+            <h4>示例：</h4>
+            <div class="sample-box">
+                <wc-loading status="loading" id="test-loading" successtext="success" failuretext="failure"></wc-loading>
+            </div>
+            <button onclick="document.querySelector('#test-loading').switchLoading()">Loading</button>
+            <button onclick="document.querySelector('#test-loading').switchSuccess().then()">Success</button>
+            <button onclick="document.querySelector('#test-loading').switchFailure().then()">Failure</button>
+        </div>
+
+        <div class="code-block">
+            <h4>代码：</h4>
+            <div class="inner">
+                &lt;wc-loading status="loading" id="test-loading" successtext="success"
+                failuretext="failure"&gt;&lt;/wc-loading&gt;
+                <br />
+                <br />
+                <br />
+                &lt;button onclick="document.querySelector('#test-loading').switchLoading()"&gt;Loading&lt;/button&gt;
+                <br />
+                &lt;button
+                onclick="document.querySelector('#test-loading').switchSuccess().then()"&gt;Success&lt;/button&gt;
+                <br />
+                &lt;button
+                onclick="document.querySelector('#test-loading').switchFailure().then()"&gt;Failure&lt;/button&gt;
+            </div>
+        </div>
+    </div>
+    <div class="component-section selector">
+        <h2 class="component-header">选择器组件</h2>
+        <hr />
+        <div class="property">
+            <h4>属性：</h4>
+            <ul>
+                <li><strong>type</strong>: 支持primary，secondary。分别表示不同按钮的颜色分类</li>
+                <li><strong>size</strong>: 支持small,normal,big。分别表示不同选择器的大小</li>
+
+            </ul>
+        </div>
+        <div class="method">
+            <h4>方法：</h4>
+            <ul>
+                <li><strong>setMenuData</strong>: 设置选择器的选择项。</li>
+            </ul>
+        </div>
+        <div class="event">
+            <h4>事件：</h4>
+            <ul>
+                <li><strong>select</strong>: 当选择项被选择时，触发'select'自定义事件，选择项可以在ev.detail中找到。</li>
+            </ul>
+        </div>
+        <div class="sample">
+            <h4>示例：</h4>
+            <wc-selector id="test-selector" style="width:250px;display:block;" size="small" type="secondary">
+            </wc-selector>
+        </div>
+        <div class="code-block">
+            <h4>代码：</h4>
+            <div class="inner">
+                <strong>HTML</strong>:
+                <br />
+                <br />
+                &lt;wc-selector id="test-selector" style="width:250px;display:block;" size="small"
+                type="secondary"&gt;&lt;/wc-selector&gt;
+                <br />
+                <br />
+                <strong>Javascript</strong>:
+                <br />
+                <br />
+                document.querySelector('#test-selector').setMenuData([{ value: 'osd', label: 'osd-label' }, { value:
+                'ASP', label: 'ASP-label' }, { value: 'DJS', label: 'DJS-label' }, { value: 'osd', label: 'osd-label' },
+                { value: 'osd', label: 'osd-label' }, { value: 'osd', label: 'osd-label' }, { value: 'osd', label:
+                'osd-label' }, { value: 'osd', label: 'osd-label' }, { value: 'osd', label: 'osd-label' }, { value:
+                'osd', label: 'osd-label' }, { value: 'osd', label: 'osd-label' }, { value: 'osd', label: 'osd-label' },
+                { value: 'osd', label: 'osd-label' }, { value: 'osd', label: 'osd-label' }, { value: 'osd', label:
+                'osd-label' }, { value: 'osd', label: 'osd-label' }, { value: 'osd', label: 'osd-label' }, { value:
+                'osd', label: 'osd-label' }, { value: 'osd', label: 'osd-label' }, { value: 'osd', label: 'osd-label' },
+                { value: 'osd', label: 'osd-label' }])
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="component-section input">
+        <h2 class="component-header">输入框组件</h2>
+        <hr>
+        <div class="property">
+            <h4>属性：</h4>
+            <ul>
+                <li><strong>type</strong>: 支持text,number。分别设置不同的输入框类型</li>
+                <li><strong>size</strong>: 支持small,normal,big。分别表示不同的输入框大小</li>
+                <li><strong>value</strong>: 设置输入框的值。</li>
+                <li><strong>required</strong>: 设置输入框是必填。（验证器）</li>
+                <li><strong>maxlength</strong>: 设置输入框输入的最大长度。（验证器）</li>
+                <li><strong>minlength</strong>: 设置输入框输入的最小长度。（验证器）</li>
+                <li><strong>min</strong>: 设置输入框输入的最小数字。（验证器）</li>
+                <li><strong>max</strong>: 设置输入框输入的最大数字。（验证器）</li>
+                <li><strong>regex</strong>: 设置输入框输入的正则匹配。（验证器）</li>
+                <li><strong>form</strong>: 设置输入框输入的父级form。（验证器）</li>
+                <li><strong>name</strong>: 设置输入框的输入元素名，与form沟通使用。</li>
+                <li><strong>disabled</strong>: 设置输入框的是否禁用。</li>
+                <li><strong>preventclean</strong>: 设置输入框的是否禁用来自表单的clear请求。</li>
+            </ul>
+        </div>
+        <div class="property">
+            <h4>内部属性：</h4>
+            <ul>
+                <li><strong>value</strong>: 输入框的当前值。</li>
+            </ul>
+        </div>
+        <div class="property">
+            <h4>Slot：</h4>
+            <ul>
+                <li><strong>label</strong>: 输入框的标签。</li>
+            </ul>
+        </div>
+        <div class="sample">
+            <h4>示例：</h4>
+            <wc-input type="text" maxlength="12" required="true" style="width: 250px;display: block;" value="示例">
+                <span slot="label">label</span>
+            </wc-input>
+        </div>
+        <div class="code-block">
+            <h4>代码：</h4>
+            <div class="inner">
+                &lt;wc-input type="text" maxlength="12" required="true" style="width: 250px;display: block;"
+                value="示例"&gt;
+                &lt;span slot="label"&gt;label&lt;/span&gt;
+                &lt;/wc-input&gt;
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="component-section dialog">
+        <h2 class="component-header">弹出框组件</h2>
+        <hr>
+        <div class="property">
+            <h4>属性：</h4>
+            <ul>
+                <li><strong>type</strong>: 支持custom,prompt,alert三种弹出框。分别设置不同的弹出框行为</li>
+                <li><strong>prompt-value</strong>: 设置输入框的值。</li>
+                <li><strong>prompt-required</strong>: 设置输入框是必填。（验证器 - prompt类型弹出框）</li>
+                <li><strong>prompt-maxlength</strong>: 设置输入框输入的最大长度。（验证器 - prompt类型弹出框）</li>
+                <li><strong>prompt-minlength</strong>: 设置输入框输入的最小长度。（验证器 - prompt类型弹出框）</li>
+                <li><strong>prompt-min</strong>: 设置输入框输入的最小数字。（验证器 - prompt类型弹出框）</li>
+                <li><strong>prompt-max</strong>: 设置输入框输入的最大数字。（验证器 - prompt类型弹出框）</li>
+                <li><strong>prompt-regex</strong>: 设置输入框输入的正则匹配。（验证器 - prompt类型弹出框）</li>
+                <li><strong>prompt-disabled</strong>: 设置prompt类型弹出框的输入框的是否禁用。</li>
+            </ul>
+        </div>
+
+        <div class="event">
+            <h4>事件：</h4>
+            <ul>
+                <li><strong>PromptOk</strong>: prompt类型弹出框的确认事件，表示用户确认输入。</li>
+                <li><strong>PromptCancel</strong>: prompt类型弹出框的取消事件，表示用户取消输入。</li>
+            </ul>
+        </div>
+        <div class="method">
+            <h4>方法：</h4>
+            <ul>
+                <li><strong>open():void</strong>: prompt类型弹出框的确认事件，表示用户确认输入。</li>
+                <li><strong>alert(msg:string):void</strong>: alert类型弹出框的启动方法。</li>
+                <li><strong>prompt():Promise</strong>: prompt类型弹出框的启动方法。</li>
+                <li><strong>close():void</strong>: 弹出框的关闭方法。</li>
+            </ul>
+        </div>
+        <div class="method">
+            <h4>Slot:</h4>
+            <ul>
+                <li><strong>title</strong>: custom类型弹出框的title部分。</li>
+                <li><strong>body</strong>: custom类型弹出框的body部分。</li>
+                <li><strong>footer</strong>: custom类型弹出框的footer部分。</li>
+            </ul>
+        </div>
+        <div class="sample">
+            <h4>示例：</h4>
+            <button onclick="document.querySelector('#custom-dialog').open()">custom dialog</button>
+            <button onclick="document.querySelector('#prompt-dialog').prompt().then(console.log)">prompt dialog</button>
+            <button onclick="document.querySelector('#alert-dialog').alert('测试警告')">alert dialog</button>
+
+            <wc-dialog type="custom" id="custom-dialog">
+                <span slot="title">自定义Dialog</span>
+                <span slot="body">自定义Dialog</span>
+                <span slot="footer">自定义Dialog</span>
+            </wc-dialog>
+            <wc-dialog type="prompt" prompt-value="初始值" prompt-maxlength="4" id="prompt-dialog">
+                <span slot="prompt-title">输入框</span>
+            </wc-dialog>
+            <wc-dialog type="alert" id="alert-dialog">
+            </wc-dialog>
+        </div>
+        <div class="code-block">
+            <h4>代码：</h4>
+            <div class="inner">
+                &lt;wc-dialog type="custom" id="custom-dialog"&gt;
+                <br/>
+                    &lt;span slot="title"&gt;自定义Dialog&lt;/span&gt;
+                    <br/>
+                    &lt;span slot="body"&gt;自定义Dialog&lt;/span&gt;
+                    <br/>
+                    &lt;span slot="footer"&gt;自定义Dialog&lt;/span&gt;
+                    <br/>
+                &lt;/wc-dialog&gt;
+                <br/>
+                <br/>
+                &lt;wc-dialog type="prompt" prompt-value="初始值" prompt-maxlength="4" id="prompt-dialog"&gt;
+                <br/>
+                    &lt;span slot="prompt-title"&gt;输入框&lt;/span&gt;
+                    <br/>
+                &lt;/wc-dialog&gt;
+                <br/>
+                <br/>
+                &lt;wc-dialog type="alert" id="alert-dialog"&gt;
+                <br/>
+                &lt;/wc-dialog&gt;
+                <br/>
+                <br/>
+                <br/>
+                &lt;button onclick="document.querySelector('#custom-dialog').open()"&gt;custom dialog&lt;/button&gt;
+                <br/>
+                &lt;button onclick="document.querySelector('#prompt-dialog').prompt().then(console.log)"&gt;prompt
+                    dialog&lt;/button&gt;
+                    <br/>
+                &lt;button onclick="document.querySelector('#alert-dialog').alert('测试警告')"&gt;alert dialog&lt;/button&gt;
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

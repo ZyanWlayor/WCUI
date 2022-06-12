@@ -1,0 +1,29 @@
+:host {
+    visibility: visible!important;
+    .wc-button {
+        outline: none;
+        cursor: pointer;
+        border-radius: 4px;
+        padding:8px 24px;
+        font-size: 16px;
+        vertical-align: middle;
+        transition: box-shadow .1s ease-in-out;
+        &.button-secondary {
+            border-color: var( --theme-color-secondary );
+            color:var( --theme-color-secondary );
+        }
+        background-color: transparent;
+        border:2px solid var( --theme-color );
+        color:var( --theme-color );
+
+        &.small {
+            padding: 4px 12px;
+            font-size: 12px;
+        }
+        &.big {
+            padding:12px 32px;
+            font-size: 22px;
+        }
+        
+    }
+}

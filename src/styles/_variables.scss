@@ -1,0 +1,16 @@
+$theme-color:#0099ff;
+$theme-color-secondary:#00b3b3;
+$font-color:#130918;
+$font-color-error:red;
+$font-color-success:#29a329;
+$container-width:1200px;
+$container-space:32px;
+
+:root {
+    --theme-color: #{$theme-color};
+    --theme-color-secondary: #{$theme-color-secondary};
+    --font-color:#{$font-color};
+    --font-color-error:#{$font-color-error};
+    --font-color-success:#{$font-color-success};
+    --container-space:#{$container-space};
+}

@@ -1,0 +1,64 @@
+<link rel="stylesheet" href="/components/styles/dialog.css">
+<div class="dialog dialog-type-custom">
+    <div class="overlay"></div>
+    <div class="dialog-instance dialog-custom">
+        <div class="close">
+            <svg viewbox="0 0 20 20">
+                <line x1="2" y1="2" x2="18" y2="18" style="stroke-width:2" />
+                <line x1="18" y1="2" x2="2" y2="18" style="stroke-width:2" />
+            </svg>
+        </div>
+        <div class="dialog-title">
+            <slot name="title">
+                <div class="dialog-title">标题</div>
+            </slot>
+        </div>
+        <div class="dialog-body">
+            <div class="inner">
+                <slot name="body"></slot>
+            </div>
+
+        </div>
+        <div class="dialog-footer">
+            <slot name="footer"></slot>
+        </div>
+    </div>
+    <div class="dialog-instance dialog-prompt">
+        <div class="close">
+            <svg viewbox="0 0 20 20">
+                <line x1="2" y1="2" x2="18" y2="18" style="stroke-width:2" />
+                <line x1="18" y1="2" x2="2" y2="18" style="stroke-width:2" />
+            </svg>
+        </div>
+        <div class="dialog-title">输入</div>
+        <div class="dialog-body">
+            <wc-input type="text">
+                <div style="display:contents;" slot="label">
+                    <slot name="prompt-label">
+                        <span>输入</span>
+                    </slot>
+                </div>
+                
+            </wc-input>
+        </div>
+        <div class="dialog-footer">
+                <wc-button type="primary" class="ok-button">确认</wc-button>
+                <wc-button type="secondary" class="cancel-button">取消</wc-button>
+        </div>
+    </div>
+    <div class="dialog-instance dialog-alert">
+        <div class="close">
+            <svg viewbox="0 0 20 20">
+                <line x1="2" y1="2" x2="18" y2="18" style="stroke-width:2" />
+                <line x1="18" y1="2" x2="2" y2="18" style="stroke-width:2" />
+            </svg>
+        </div>
+        <div class="dialog-title">提示</div>
+        <div class="dialog-body">
+            <p class="alert-content">提示内容</p>
+        </div>
+        <div class="dialog-footer">
+            <wc-button type="primary" class="ok-button">确认</wc-button>
+        </div>
+    </div>
+</div>

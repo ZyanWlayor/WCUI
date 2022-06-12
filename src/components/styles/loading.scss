@@ -1,0 +1,99 @@
+:host {
+    visibility: visible!important;
+    @keyframes fall-in {
+        0% {
+            -webkit-transform: scale(3, 3);
+            transform: scale(3, 3);
+            opacity: 0;
+        }
+
+        50% {
+            -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+            opacity: 1;
+        }
+
+        60% {
+            -webkit-transform: scale(1.1, 1.1);
+            transform: scale(1.1, 1.1);
+        }
+
+        100% {
+            -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+        }
+    }
+
+
+    .loader {
+        position: absolute !important;
+        left: 5px;
+        top: 5px;
+        width: calc(100% - 10px);
+        height: calc(100% - 10px);
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        backdrop-filter: blur(5px);
+        z-index: 999;
+
+        >* {
+            display: none;
+        }
+
+        &.loading {
+            .loading-animate {
+                display: inline-flex;
+            }
+        }
+
+        &.success {
+            .success-animate {
+                display: inline-flex;
+            }
+        }
+
+        &.failure {
+            .failure-animate {
+                display: inline-flex;
+            }
+        }
+
+        .circle-stage {
+            width: 96px;
+            height: 96px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            .circle-icon {
+                width: 96px;
+                height: 96px;
+                border-radius: 50%;
+    
+                &.animate {
+                    animation: fall-in 0.75s;
+                }
+            }
+        }
+        .success-animate,.failure-animate {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+        }
+        .success-animate {
+            .circle-icon {
+                background-color: var(--font-color-success);
+
+            }
+        }
+
+        .failure-animate {
+            .circle-icon {
+                background-color: var(--font-color-error);
+            }
+        }
+
+    }
+}

@@ -1,0 +1,44 @@
+@import "../public";
+
+h1.header {
+    font-weight: bold;
+    margin:16px;
+    font-size: 1.5em;
+}
+.component-section {
+    &.loading {
+        .sample {
+            .sample-box {
+                position: relative;
+                width: 500px;
+                height: 250px;
+            }
+        }
+    }
+    margin:16px;
+    h2 {
+        font-weight: bold;
+    }
+    .property,.method,.event,.sample {
+        strong {
+            font-weight: bold;
+        }
+        h4 {
+            margin-bottom: 20px;
+        }
+        margin-bottom: 20px;
+    }
+    .code-block {
+        strong {
+            font-weight: bold;
+        }
+        h4 {
+            margin-bottom: 20px;
+        }
+        .inner  {
+            background-color: #eee;
+            border-radius: 8px;
+            padding:20px;
+        }
+    }
+}
