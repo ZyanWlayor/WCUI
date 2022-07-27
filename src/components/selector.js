@@ -20,7 +20,7 @@ class WCSelector extends HTMLElement {
         super()
     }
     static get observedAttributes() {
-        return ['type', 'size'];
+        return ['type', 'size','form','name'];
     }
     // attribute change
     attributeChangedCallback(property, oldValue, newValue) {
@@ -44,7 +44,7 @@ class WCSelector extends HTMLElement {
                 return;
         }
     }
-    connectedCallback() {
+    async connectedCallback() {
         const shadow = this.attachShadow({ mode: 'open' })
         shadow.append(document.getElementById(`${this.templateName}-template`).content.cloneNode(true))
 
@@ -55,14 +55,36 @@ class WCSelector extends HTMLElement {
         this.arrowElm = this.shadowRoot.querySelector('.arrow')
         this.mainElm.addEventListener('click', this._click)
         this.menuElm.addEventListener('transitionend', this._menuListTransitionEnd)
-        document.documentElement.addEventListener('click',this._autoClose)
+        document.body.addEventListener('click',this._autoClose)
 
         this._setSelectorSize(this.size)
         this._setSelectorType(this.type)
         this._setNoMenuData()
+
+        if (this.name && this.form && window[this.form]) {
+            this.formElement = {
+                name: this.name,
+                validated: false,
+                value: '',
+                errorMsg: '',
+                clear:()=>{
+                    // set selector to first item
+                    const clickEvent = new Event('click')
+                    this.menuListElm.children[0] && this.menuListElm.children[0].dispatchEvent(clickEvent)
+                },
+                validate:()=>{
+                    // show selector status for form like a error color for non-select
+                    if(!this.formElement.validated){
+                        this.mainElm.classList.add(`selector-validate-error`)
+                    }
+                }
+            }
+            window[this.form].registerFormElement(this.formElement)
+        }
     }
     disconnectedCallback(){
-        document.documentElement.removeEventListener('click',this._autoClose)
+        
+        document.body.removeEventListener('click',this._autoClose)
     }
     // set size of this selector
     _setSelectorSize(size = 'normal'){
@@ -74,7 +96,7 @@ class WCSelector extends HTMLElement {
     // set type of this selector
     _setSelectorType(type = 'primary'){
         if(this.mainElm){
-            this.mainElm.classList.remove(...SELECTOR_SIZE.map(size=>`selector-${type}`))
+            this.mainElm.classList.remove(...SELECTOR_TYPE.map(type=>`selector-${type}`))
             this.mainElm.classList.add(`selector-${type}`)
         }
     }
@@ -152,13 +174,19 @@ class WCSelector extends HTMLElement {
                 menuItemElm.addEventListener('click',()=>{
                     this.value = menuItem.value
                     this.inputElm.value = menuItem.label.toString()
+                    // sync with form
+                    if(this.formElement){
+                        this.formElement.value = menuItem.value
+                        this.formElement.validated = true
+                    }
                     this.menuListElm.querySelectorAll('li').forEach(i=>{
                         i.classList.remove('active')
                     })
                     menuItemElm.classList.add('active')
                     // emit select event
-                    const event = new CustomEvent("select", {"detail":menuItem})
+                    const event = new CustomEvent("Select", {"detail":menuItem})
                     this.dispatchEvent(event)
+                    this.formElement && this.mainElm.classList.remove('selector-validate-error')
                 })
                 menuUlElm.appendChild(menuItemElm)
             }
@@ -188,6 +216,10 @@ class WCSelector extends HTMLElement {
             menuUlElm.appendChild(menuItemEmptyElm)
             this.menuElm.append(menuUlElm)
             this.menuListElm = menuUlElm
+            if(this.formElement){
+                this.formElement.validated = false
+                this.formElement.value = ''
+            }
     }
 }
 

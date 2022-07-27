@@ -1,5 +1,7 @@
 $theme-color:#0099ff;
+$theme-color-light: lighten($theme-color,35);
 $theme-color-secondary:#00b3b3;
+$theme-color-error:red;
 $font-color:#130918;
 $font-color-error:red;
 $font-color-success:#29a329;
@@ -8,7 +10,9 @@ $container-space:32px;
 
 :root {
     --theme-color: #{$theme-color};
+    --theme-color-light: #{$theme-color-light};
     --theme-color-secondary: #{$theme-color-secondary};
+    --theme-color-error:#{$theme-color-error};
     --font-color:#{$font-color};
     --font-color-error:#{$font-color-error};
     --font-color-success:#{$font-color-success};

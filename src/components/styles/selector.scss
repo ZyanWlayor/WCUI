@@ -83,7 +83,34 @@
                 }
             }
         }
+        &.selector-validate-error {
+            *::-webkit-scrollbar-thumb{
+                background-color: var(--theme-color-error);
+            }
+            .arrow {
+                border-color: var(--theme-color-error);
+            }
 
+            input {
+                border-color: var(--theme-color-error);
+            }
+
+            .menu {
+                .menu-list {
+                    border-color: var(--theme-color-error);
+                    li {
+                        &:hover {
+                            background-color: var(--theme-color-error);
+                        }
+                        &.active {
+                            color:var(--theme-color-error);
+                        }
+                    }
+                }
+
+            }
+
+        }
         .arrow {
             position: absolute;
             width: 10px;

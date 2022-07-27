@@ -2,10 +2,59 @@
 
 h1.header {
     font-weight: bold;
-    margin:16px;
+    margin: 16px;
     font-size: 1.5em;
 }
+h2.header {
+    font-weight: bold;
+    margin: 16px;
+    font-size: 1.2em;
+}
+.catalogue {
+    margin: 16px;
+
+    >ul {
+        margin-top: 16px;
+
+        li {
+            padding-left: 1em;
+            line-height: 2;
+
+            a {
+                color: var(--theme-color);
+            }
+            .component-list {
+
+            }
+        }
+    }
+}
+
+
+
+.introduction-section {
+    margin: 16px;
+
+    h1 {
+        font-weight: bold;
+
+        font-size: 1.2em;
+    }
+    p {
+        margin:16px 0;
+    }
+}
+
 .component-section {
+    h1 {
+        font-weight: bold;
+        font-size: 1.2em;
+        margin-bottom: 16px;
+    }
+    h2 {
+        font-weight: bold;
+    }
+
     &.loading {
         .sample {
             .sample-box {
@@ -15,30 +64,43 @@ h1.header {
             }
         }
     }
+
     margin:16px;
-    h2 {
-        font-weight: bold;
-    }
-    .property,.method,.event,.sample {
+
+    .property,
+    .method,
+    .event,
+    .sample {
+        ul {
+            li {
+                margin:5px 0;
+            }
+        }
         strong {
             font-weight: bold;
+            color:var(--theme-color);
         }
+
         h4 {
             margin-bottom: 20px;
         }
+
         margin-bottom: 20px;
     }
-    .code-block {
-        strong {
-            font-weight: bold;
-        }
-        h4 {
-            margin-bottom: 20px;
-        }
-        .inner  {
-            background-color: #eee;
-            border-radius: 8px;
-            padding:20px;
-        }
+
+}
+.code-block {
+    strong {
+        font-weight: bold;
+    }
+
+    h4 {
+        margin-bottom: 20px;
+    }
+
+    .inner {
+        background-color: #eee;
+        border-radius: 8px;
+        padding: 20px;
     }
 }

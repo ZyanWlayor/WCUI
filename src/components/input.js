@@ -119,7 +119,7 @@ class WCInput extends HTMLElement {
         }
 
         // bind form
-        if (this.name && this.form) {
+        if (this.name && this.form && window[this.form]) {
             this.formElement = {
                 name: this.name,
                 validated: false,
@@ -132,8 +132,7 @@ class WCInput extends HTMLElement {
                     this._validateOnce()
                 }
             }
-            const [authenticationForm] = await Utils.loadPublicModule([this.form])
-            authenticationForm.registerFormElement(this.formElement)
+            window[this.form].registerFormElement(this.formElement)
         }
         
         

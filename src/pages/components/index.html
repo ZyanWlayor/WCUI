@@ -15,12 +15,93 @@
 
 <body>
     <h1 class="header">WCUI-Starter Guide</h1>
-    <h2 class="">目录：</h2>
-    <ul>
+    <h1 class="header">目录</h1>
+    <div class="catalogue">
+        <ul>
+            <li>1. <a href="#introduction">简介</a> </li>
+            <li>2. <a href="#uicomponent">UI组件</a></li>
+            <li>
+                <ul class="component-list">
+                    <li><a href="#button-component"> - 按钮组件</a></li>
+                    <li><a href="#loading-component"> - 加载器组件</a></li>
+                    <li><a href="#selector-component"> - 选择组件</a></li>
+                    <li><a href="#input-component"> - 输入框组件</a></li>
+                    <li><a href="#dialog-component"> - 对话框组件</a></li>
+                </ul>
+            </li>
+            <li>3. <a href="#javascriptcomponent">Javascript组件</a></li>
+            <li>4. <a href="#utilscomponent">Utils</a></li>
+        </ul>
+    </div>
+    <h2 class="header"><a name="introduction">简介</a></h2>
+    <div class="introduction-section">
 
-    </ul>
+        <p>
+            这是一个基于WebComponent、Scss、Spanner以Gulp为打包工具的Starter。
+        </p>
+        <p>
+            通过在pages下新建html，entries下新建页面主Javascript，styles下新建样式文件来新建入口。
+        </p>
+        <p>
+            本页大概的HTML模板如下：
+        </p>
+        <div class="code-block">
+            <div class="inner">
+                &lt;!DOCTYPE html&gt;
+                <br />
+                &lt;html&gt;
+                <br />
+                &lt;head&gt;
+                <br />
+                &lt;meta charset="UTF-8"&gt;
+                <br />
+                &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+                <br />
+                &lt;meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"&gt;
+                <br />
+                &lt;title&gt;WCUI-Starter&lt;/title&gt;
+                <br />
+                &lt;link rel="stylesheet" href="/styles/reset.css"&gt;
+                <br />
+                &lt;link rel="stylesheet" href="/styles/components/index.css"&gt;
+                <br />
+                &lt;script src="/assets/spanner.js"&gt;&lt;/script&gt;
+                <br />
+                &lt;script src="/scripts/utils.js" defer&gt;&lt;/script&gt;
+                <br />
+                &lt;script src="/components/index.js" defer&gt;&lt;/script&gt;
+                <br />
+                &lt;/head&gt;
+                <br />
+                // ........
+                <br />
+                &lt;/html&gt;
+            </div>
+
+        </div>
+        <h2>页面Javascript模板如下：</h2>
+        <div class="code-block">
+            <div class="inner">
+                document.addEventListener('DOMContentLoaded', async function () {
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;//wait for component loaded
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;window.spanner.loadWebComponents(['button',
+                'selector','input','loading','dialog','dateTimePicker']).then(() => {
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// write your code ...
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;})
+                <br />
+                })
+            </div>
+        </div>
+    </div>
+    <h1 class="header"><a name="uicomponent">UI组件</a></h1>
+    <h2 class="component-header header"><a name="button-component">按钮组件</a></h2>
     <div class="component-section button">
-        <h2 class="component-header">按钮组件</h2>
+
+
         <hr>
 
         <div class="property">
@@ -51,8 +132,9 @@
 
 
     </div>
+    <h2 class="header"><a name="loading-component">加载器组件</a></h2>
     <div class="component-section loading">
-        <h2 class="component-header">加载器组件</h2>
+
         <hr>
 
         <div class="property">
@@ -107,8 +189,9 @@
             </div>
         </div>
     </div>
+    <h2 class="header"><a name="selector-component">选择器组件</a></h2>
     <div class="component-section selector">
-        <h2 class="component-header">选择器组件</h2>
+
         <hr />
         <div class="property">
             <h4>属性：</h4>
@@ -127,7 +210,7 @@
         <div class="event">
             <h4>事件：</h4>
             <ul>
-                <li><strong>select</strong>: 当选择项被选择时，触发'select'自定义事件，选择项可以在ev.detail中找到。</li>
+                <li><strong>Select</strong>: 当选择项被选择时，触发'select'自定义事件，选择项可以在ev.detail中找到。</li>
             </ul>
         </div>
         <div class="sample">
@@ -163,8 +246,8 @@
 
 
     </div>
+    <h2 class="header"><a name="input-component">输入框组件</a></h2>
     <div class="component-section input">
-        <h2 class="component-header">输入框组件</h2>
         <hr>
         <div class="property">
             <h4>属性：</h4>
@@ -215,8 +298,9 @@
 
 
     </div>
+    <h2 class="header"><a name="dialog-component">弹出框组件</a></h2>
     <div class="component-section dialog">
-        <h2 class="component-header">弹出框组件</h2>
+
         <hr>
         <div class="property">
             <h4>属性：</h4>
@@ -278,37 +362,183 @@
             <h4>代码：</h4>
             <div class="inner">
                 &lt;wc-dialog type="custom" id="custom-dialog"&gt;
-                <br/>
-                    &lt;span slot="title"&gt;自定义Dialog&lt;/span&gt;
-                    <br/>
-                    &lt;span slot="body"&gt;自定义Dialog&lt;/span&gt;
-                    <br/>
-                    &lt;span slot="footer"&gt;自定义Dialog&lt;/span&gt;
-                    <br/>
+                <br />
+                &lt;span slot="title"&gt;自定义Dialog&lt;/span&gt;
+                <br />
+                &lt;span slot="body"&gt;自定义Dialog&lt;/span&gt;
+                <br />
+                &lt;span slot="footer"&gt;自定义Dialog&lt;/span&gt;
+                <br />
                 &lt;/wc-dialog&gt;
-                <br/>
-                <br/>
+                <br />
+                <br />
                 &lt;wc-dialog type="prompt" prompt-value="初始值" prompt-maxlength="4" id="prompt-dialog"&gt;
-                <br/>
-                    &lt;span slot="prompt-title"&gt;输入框&lt;/span&gt;
-                    <br/>
+                <br />
+                &lt;span slot="prompt-title"&gt;输入框&lt;/span&gt;
+                <br />
                 &lt;/wc-dialog&gt;
-                <br/>
-                <br/>
+                <br />
+                <br />
                 &lt;wc-dialog type="alert" id="alert-dialog"&gt;
-                <br/>
+                <br />
                 &lt;/wc-dialog&gt;
-                <br/>
-                <br/>
-                <br/>
+                <br />
+                <br />
+                <br />
                 &lt;button onclick="document.querySelector('#custom-dialog').open()"&gt;custom dialog&lt;/button&gt;
-                <br/>
+                <br />
                 &lt;button onclick="document.querySelector('#prompt-dialog').prompt().then(console.log)"&gt;prompt
-                    dialog&lt;/button&gt;
-                    <br/>
-                &lt;button onclick="document.querySelector('#alert-dialog').alert('测试警告')"&gt;alert dialog&lt;/button&gt;
+                dialog&lt;/button&gt;
+                <br />
+                &lt;button onclick="document.querySelector('#alert-dialog').alert('测试警告')"&gt;alert
+                dialog&lt;/button&gt;
             </div>
         </div>
+    </div>
+    <h2 class="header"><a name="dateTimePicker-component">时间选择器组件</a></h2>
+    <div class="component-section dateTimePicker">
+
+        <hr>
+        <div class="property">
+            <h4>属性：</h4>
+            <ul>
+                <li><strong>type</strong>: 支持date,time,datetime三种选择模式，默认为date。date是日期选择器，time是时间选择器，datetime是时间日期选择器。
+                </li>
+                <li><strong>size</strong>: 支持big,normal,small三种弹出框，分别设置不同的时间选择框大小。</li>
+                <li><strong>value</strong>: 设置选择器的初始值，这个字符串可以被Date对象格式化（new Date(datestring)）。比如：'2020 02/20 17:12'。
+                </li>
+                <li><strong>range</strong>: 设置选择器的选择范围 'datestring - datestring'，这个字符串可以被Date对象格式化（new
+                    Date(datestring)）,比如：'2020 02/20 00:00 - 2020 02/21 23:59'。<br />
+                    （注意在设置range的时候要注意时和分的处理，即使在date类型的选择器下时和分也是客观存在的，要使整天可选，最好把range最后一天的时分位定义为23:59）
+                </li>
+            </ul>
+        </div>
+        <div class="property">
+            <h4>内部属性</h4>
+            <ul>
+                <li><strong>value</strong>: 选中的日期，是一个Date类型的值，表示当前选中的日期。</li>
+                <li><strong>datePickerValue</strong>: 日期选择器显示的日期，是一个Date类型的值，表示当前选择区的基准日期。</li>
+            </ul>
+
+        </div>
+        <div class="event">
+            <h4>事件：</h4>
+            <ul>
+                <li><strong>DateChange</strong>: 选中的日期发生变化，{detail:value}</li>
+                <li><strong>DatePickerValueChange</strong>: 选择器中的显示日期发生变化。</li>
+                <li><strong>Open</strong>: 选择框打开事件。</li>
+                <li><strong>Close</strong>: 选择框关闭事件。</li>
+            </ul>
+        </div>
+        <div class="sample">
+            <h4>
+                示例：
+            </h4>
+            <wc-datetimepicker size="big" type="datetime" range="2022 06/25 00:00 - 2022 07/23 23:59"
+                value="2022 06/25 08:10"></wc-datetimepicker>
+        </div>
+        <div class="code-block">
+            <h4>代码：</h4>
+            <div class="inner">
+                &lt;wc-datetimepicker size="big" type="datetime" range="2022 06/25 00:00 - 2022 07/23 23:59"
+                value="2022 06/25 08:10"&gt;&lt;/wc-datetimepicker&gt;
+            </div>
+        </div>
+    </div>
+    <h1 class="header"><a name="javascriptcomponent">Javascript组件</a></h1>
+    <h2 class="header">Spanner</h2>
+    <div class="jscomponent-spanner component-section">
+        <hr/>
+        <p>引入了spanner库，可以在页面模板中看到调用方式，详情访问<a href="https://github.com/ZyanWlayor/Spanner">https://github.com/ZyanWlayor/Spanner</a></p>
+    </div>
+    <h2 class="header">AuthenticationForm组件</h2>
+    <div class="jscomponent-authentication-form component-section">
+        <hr/>
+        <p>
+            AuthenticationForm组件位于scripts/utils.js内，与input,timepicker，selector等组件可以交互组成表单结构。
+        </p>
+        <p>
+            AuthenticationForm类：
+        </p>
+        <div class="property">
+            <h4>属性：</h4>
+            <ul>
+                <li><strong>_formElements</strong>: 表单对象绑定的对象数组。每个元素对应组件的formElement属性。</li>
+            </ul>
+
+        </div>
+
+        <div class="method">
+            <h4>方法：</h4>
+            <ul>
+                <li><strong>isValid()</strong>: 检查表单绑定元素是否通过验证。返回true或false。</li>
+                <li><strong>getValueByFieldName(fieldName)</strong>: 获取与fieldName对应组件的值。</li>
+                <li><strong>reset()</strong>: 重置整个表单实例。danger！</li>
+                <li><strong>registerFormElement(formElement)</strong>: 向表单实例里注册表单组件的formElement，组件元素内部使用。</li>
+                <li><strong>clearForm()</strong>: 重置表单内组件元素到初始值。</li>
+            </ul>
+
+        </div>
+        <div class="sample">
+            <h4>示例：</h4>
+        <div class="sample-form">
+            <wc-input id="form-testName" type="number" form="authenticationForm" name="testName" required="true">
+                <span slot="label">
+                    测试
+                </span>
+            </wc-input>
+
+            <wc-selector id="form-testPro" form="authenticationForm" name="testPro"></wc-selector>
+            <wc-datetimepicker id="form-testDatePicker" type="datetime" form="authenticationForm" name="testDatePicker"></wc-datetimepicker>
+        </div>
+        </div>
+        
+        <div class="code-block">
+            <h4>代码：</h4>
+            <div class="inner">
+                html代码：
+                <br />
+                <br />
+                &lt;div class="sample-form"&gt;
+                    <br />
+                    
+                    &lt;wc-input id="form-testName" type="number" form="authenticationForm" name="testName" required="true"&gt;
+                    <br />
+                        &lt;span slot="label"&gt;
+                        <br />
+                            测试
+                            <br />
+                        &lt;/span&gt;
+                        <br />
+                    &lt;/wc-input&gt;
+                    <br />
+                    <br />
+                    &lt;wc-selector id="form-testPro" form="authenticationForm" name="testPro"&gt;&lt;/wc-selector&gt;
+                    <br />
+                &lt;/div&gt;
+                <br />
+                <br />
+                Javascript代码：
+                <br />
+                <br />
+                let  authenticationForm = new AuthenticationForm()
+                <br />
+                <br />
+                window.addEventListener('load', function () {
+                <br />
+                    
+                    &nbsp;&nbsp;&nbsp;&nbsp;window.spanner.loadWebComponents(['button', 'selector','input','loading','dialog','dateTimePicker']).then(() => {
+                        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.querySelector('#form-testPro').setMenuData([{label:'UI',value:1},{label:'muu',value:2}])
+                    <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;})
+                    <br />
+                    })
+                <br />
+            </div>
+        </div>
+        
+
     </div>
 </body>
 
