@@ -36,7 +36,13 @@ body.noscroll {
     background-color: var( --theme-color );
 }
 
-wc-button,wc-loading,wc-input,wc-dialog,wc-selector,wc-datetimepicker {
+wc-button,
+wc-loading,
+wc-input,
+wc-dialog,
+wc-selector,
+wc-datetimepicker,
+wc-fileSelector {
     display: inline-block;
     visibility: hidden;
 }

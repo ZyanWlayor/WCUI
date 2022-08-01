@@ -15,6 +15,9 @@
 
 <body>
     <h1 class="header">WCUI-Starter Guide</h1>
+    <div>
+        <wc-fileselector></wc-fileselector>
+    </div>
     <h1 class="header">目录</h1>
     <div class="catalogue">
         <ul>
@@ -448,12 +451,13 @@
     <h1 class="header"><a name="javascriptcomponent">Javascript组件</a></h1>
     <h2 class="header">Spanner</h2>
     <div class="jscomponent-spanner component-section">
-        <hr/>
-        <p>引入了spanner库，可以在页面模板中看到调用方式，详情访问<a href="https://github.com/ZyanWlayor/Spanner">https://github.com/ZyanWlayor/Spanner</a></p>
+        <hr />
+        <p>引入了spanner库，可以在页面模板中看到调用方式，详情访问<a
+                href="https://github.com/ZyanWlayor/Spanner">https://github.com/ZyanWlayor/Spanner</a></p>
     </div>
     <h2 class="header">AuthenticationForm组件</h2>
     <div class="jscomponent-authentication-form component-section">
-        <hr/>
+        <hr />
         <p>
             AuthenticationForm组件位于scripts/utils.js内，与input,timepicker，selector等组件可以交互组成表单结构。
         </p>
@@ -481,18 +485,19 @@
         </div>
         <div class="sample">
             <h4>示例：</h4>
-        <div class="sample-form">
-            <wc-input id="form-testName" type="number" form="authenticationForm" name="testName" required="true">
-                <span slot="label">
-                    测试
-                </span>
-            </wc-input>
+            <div class="sample-form">
+                <wc-input id="form-testName" type="number" form="authenticationForm" name="testName" required="true">
+                    <span slot="label">
+                        测试
+                    </span>
+                </wc-input>
 
-            <wc-selector id="form-testPro" form="authenticationForm" name="testPro"></wc-selector>
-            <wc-datetimepicker id="form-testDatePicker" type="datetime" form="authenticationForm" name="testDatePicker"></wc-datetimepicker>
+                <wc-selector id="form-testPro" form="authenticationForm" name="testPro"></wc-selector>
+                <wc-datetimepicker id="form-testDatePicker" type="datetime" form="authenticationForm"
+                    name="testDatePicker"></wc-datetimepicker>
+            </div>
         </div>
-        </div>
-        
+
         <div class="code-block">
             <h4>代码：</h4>
             <div class="inner">
@@ -500,44 +505,46 @@
                 <br />
                 <br />
                 &lt;div class="sample-form"&gt;
-                    <br />
-                    
-                    &lt;wc-input id="form-testName" type="number" form="authenticationForm" name="testName" required="true"&gt;
-                    <br />
-                        &lt;span slot="label"&gt;
-                        <br />
-                            测试
-                            <br />
-                        &lt;/span&gt;
-                        <br />
-                    &lt;/wc-input&gt;
-                    <br />
-                    <br />
-                    &lt;wc-selector id="form-testPro" form="authenticationForm" name="testPro"&gt;&lt;/wc-selector&gt;
-                    <br />
+                <br />
+
+                &lt;wc-input id="form-testName" type="number" form="authenticationForm" name="testName"
+                required="true"&gt;
+                <br />
+                &lt;span slot="label"&gt;
+                <br />
+                测试
+                <br />
+                &lt;/span&gt;
+                <br />
+                &lt;/wc-input&gt;
+                <br />
+                <br />
+                &lt;wc-selector id="form-testPro" form="authenticationForm" name="testPro"&gt;&lt;/wc-selector&gt;
+                <br />
                 &lt;/div&gt;
                 <br />
                 <br />
                 Javascript代码：
                 <br />
                 <br />
-                let  authenticationForm = new AuthenticationForm()
+                let authenticationForm = new AuthenticationForm()
                 <br />
                 <br />
                 window.addEventListener('load', function () {
                 <br />
-                    
-                    &nbsp;&nbsp;&nbsp;&nbsp;window.spanner.loadWebComponents(['button', 'selector','input','loading','dialog','dateTimePicker']).then(() => {
-                        <br />
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.querySelector('#form-testPro').setMenuData([{label:'UI',value:1},{label:'muu',value:2}])
-                    <br />
-                    &nbsp;&nbsp;&nbsp;&nbsp;})
-                    <br />
-                    })
+
+                &nbsp;&nbsp;&nbsp;&nbsp;window.spanner.loadWebComponents(['button',
+                'selector','input','loading','dialog','dateTimePicker']).then(() => {
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.querySelector('#form-testPro').setMenuData([{label:'UI',value:1},{label:'muu',value:2}])
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;})
+                <br />
+                })
                 <br />
             </div>
         </div>
-        
+
 
     </div>
 </body>

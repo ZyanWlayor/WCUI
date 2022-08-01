@@ -18,6 +18,18 @@ gulp dev                    // for development
 gulp build                  // for build release
 ```
 
+*ensure you have install windows build tools correctly,when install nodejs,and access to raw.githubusercontent.com*
+
+*enable proxy and set proxy env to your shell,to get binary of image precessor successfully eg:*
+
+```
+// powershell
+$env:all_proxy="http://yourproxy"
+
+// bash
+export all_proxy="http://yourproxy"
+```
+
 ## File Struct
 
 #### dist
